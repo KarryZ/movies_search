@@ -1,0 +1,29 @@
+.filter-list{
+    list-style: none;
+    display: flex;
+}
+
+.filter-list-item{
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    color: #ffffff;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 100;
+    border-bottom: 2px solid transparent;
+    transition: border 0.4s;
+    cursor: pointer;
+    outline: none;
+    letter-spacing: 2px;
+}
+
+.filter-list-item.active{
+    border-bottom: 2px solid #f65251;
+}
+
+.filter-list-item:hover{
+    border-bottom: 2px solid #f65251;
+}

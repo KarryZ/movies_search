@@ -1,0 +1,8 @@
+.item-image{
+    width: 100%;
+    height: 640px;
+    background-image: url(../../images/movie-cover.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
