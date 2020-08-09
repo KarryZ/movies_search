@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './movies-list.css';
 import MovieItem from '../movie-item';
+import ErrorBoudary from '../error-boudary';
 
 export default class MoviesList extends Component {
   constructor() {
@@ -13,25 +14,25 @@ export default class MoviesList extends Component {
       img: "../../images/movie-cover.jpeg"
     }, {
       key: "m2",
-      title: "Bohemian Rhapsody",
+      title: "Bohemian Rhapsody1",
       description: "Drama Biography Music",
       year: "2019",
       img: "../../images/movie-cover.jpeg"
     }, {
       key: "m3",
-      title: "Bohemian Rhapsody",
+      title: "Bohemian Rhapsody2",
       description: "Drama Biography Music",
       year: "2019",
       img: "../../images/movie-cover.jpeg"
     }, {
       key: "m4",
-      title: "Bohemian Rhapsody",
+      title: "Bohemian Rhapsody3",
       description: "Drama Biography Music",
       year: "2019",
       img: "../../images/movie-cover.jpeg"
     }, {
       key: "m5",
-      title: "Bohemian Rhapsody",
+      title: "Bohemian Rhapsody4",
       description: "Drama Biography Music",
       year: "2019",
       img: "../../images/movie-cover.jpeg"
@@ -40,12 +41,16 @@ export default class MoviesList extends Component {
 
   render() {
     let movieItems = this.data.map((item) => 
-      <MovieItem key={item.key} title={item.title} description={item.description} year={item.year}/>
+      <MovieItem key={item.key} title={item.title} description={item.description} year={item.year} cover={item.img} />
     );
+    let isDataReceived = this.data.length;
     return (
-      <div className='movies-list'>
-        {movieItems}
-      </div>
+      <ErrorBoudary isDataReceived={isDataReceived} >
+        <div className='movies-list'>
+          {movieItems}
+        </div>
+      </ErrorBoudary>
+      
     )
   }
 }

@@ -5,7 +5,7 @@ export default class ItemDate extends Component {
     render() {
         return (
           <div className='item-date'>
-            2003
+            {this.props.year}
           </div>
         )
       }

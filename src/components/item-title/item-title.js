@@ -5,7 +5,7 @@ export default class ItemTitle extends Component {
     render() {
         return (
           <div className='item-title'>
-            Bohemian Rhapsody
+            {this.props.title}
           </div>
         )
       }

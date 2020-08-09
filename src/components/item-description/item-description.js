@@ -5,7 +5,7 @@ export default class ItemDescription  extends Component {
     render() {
         return (
           <div className='item-description'>
-            Drama Biography Music
+            {this.props.description}
           </div>
         )
       }
