@@ -1,0 +1,14 @@
+.movie-item{
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    /* width: 30%; */
+    /* margin-bottom: 60px; */
+}
+
+
+
+.movie-item .wrapper{
+    margin-top: 10px;
+    align-items: center;
+}

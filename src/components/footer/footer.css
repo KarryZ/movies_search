@@ -1,0 +1,11 @@
+.footer{
+    background-color: #555555;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.footer svg{
+    fill: #f65261;
+}

@@ -1,0 +1,14 @@
+.add-movie{
+    min-width: 120px;
+    height: 40px;
+    padding: 0 20px;
+    background-color: rgba(0,0,0, 0.4);
+    border-radius: 6px;
+    border: 1px solid #E63B3B;
+    outline: none;
+    font-size: 20px;
+    color: #E63B3B;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+}
