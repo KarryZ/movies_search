@@ -1,0 +1,18 @@
+.reset-modal-btn{
+    height: 50px;
+    min-width: 120px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 6px;
+    border: 1px solid #E63B3B;
+    outline: none;
+    font-size: 20px;
+    color: #E63B3B;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 15px;
+}

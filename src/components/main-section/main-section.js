@@ -11,7 +11,7 @@ export default class MainSection extends Component {
             <div className='container'>
               <NavPanel/>
               <CountMovies/>
-              <MoviesList/>
+              <MoviesList moviesList={this.props.moviesList}/>
             </div>
           </div>
         )

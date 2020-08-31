@@ -3,12 +3,12 @@ import './item-image.css';
 
 export default class ItemImage extends Component {
     render() {
-      //var cover = this.props.cover;
-      // var styles= {
-      //   backgroundImage: `url(${cover})`
-      // };
+      var cover = this.props.cover;
+      var styles= {
+       backgroundImage: `url('${cover}')`,
+      };
         return (
-          <div className='item-image'></div>
+          <div className='item-image' style={styles}></div>
         )
       }
 }
