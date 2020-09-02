@@ -21,6 +21,7 @@ export default class MoviesList extends Component {
         onOptionHandler={this.props.onOptionHandler}
         onCloseDropDown={this.props.onCloseDropDown}
         onSubmitForm={this.props.onSubmitForm}
+        onDeleteMovie={this.props.onDeleteMovie}
         />);
     });
     let isDataReceived = this.aData.length;

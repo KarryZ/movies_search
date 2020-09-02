@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './option-dropdown.css';
 import ModalDialog from '../modal-dialog';
+import ModalDelete from '../modal-delete';
 
 
 export default class OptionDropDown extends Component {
@@ -9,6 +10,7 @@ export default class OptionDropDown extends Component {
     this.oSavedMovieData = Object.assign(this.props.movieData);
     this.state = {
       showModalEdit: false,
+      showModalDelete: false,
       oSavedMovieData: this.oSavedMovieData
     };
     
@@ -43,16 +45,26 @@ export default class OptionDropDown extends Component {
     })
   } 
 
+  handleOpenDeleteModal = () => {
+    this.setState({ showModalDelete: true });       
+  }
+
+  handleCloseDeleteModal = () => {
+    this.setState({ showModalDelete: false });
+    this.props.onCloseDropDown(this.props.id);
+  }
+
   render() {    
     let isVisible = this.props.isOpenDropDown;
     let isVisibleModalEdit = this.state.showModalEdit;
+    let isVisibleModalDelete = this.state.showModalDelete;
     
     return isVisible ? (
       <div className='dropdown-option'>
         <button className='dropdown-option-close' onClick={() => { this.props.onCloseDropDown(this.props.id)}} />
         <ul className='dropdown-option-items'>
-          <li className='dropdown-option-item'  onClick={() => {this.handleOpenModal(this.props.id)}} >Edit</li>
-          <li className='dropdown-option-item'>Delete</li>
+          <li className='dropdown-option-item' onClick={() => {this.handleOpenModal(this.props.id)}} >Edit</li>
+          <li className='dropdown-option-item' onClick={() => {this.handleOpenDeleteModal(this.props.id)}}  >Delete</li>
         </ul>
         
         <ModalDialog 
@@ -64,6 +76,12 @@ export default class OptionDropDown extends Component {
           movieData={this.state.oSavedMovieData}
           updatePropertyValue={this.updatePropertyValue}
           isNewMovie={false} />
+        
+        <ModalDelete 
+          isOpen={isVisibleModalDelete} 
+          handleCloseModal={this.handleCloseDeleteModal}
+          onDeleteMovie={this.props.onDeleteMovie}
+          id={this.state.oSavedMovieData.id} />
         
         
       </div>

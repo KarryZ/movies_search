@@ -103,6 +103,19 @@ export default class App extends Component {
 
   }
 
+  onDeleteMovie = (id) => {
+    this.setState(( {aData} )=> {
+      const idx = aData.findIndex( (el) => el.id === id );
+      const newArr = [
+          ...aData.slice(0, idx),
+          ...aData.slice(idx+1)
+      ];
+
+      return {
+        aData: newArr
+      }
+  })
+  }
   
 
   render() {
@@ -114,6 +127,7 @@ export default class App extends Component {
           onOptionHandler={this.onOptionHandler}
           onCloseDropDown={this.onCloseDropDown}
           onSubmitForm={this.onSubmitForm}
+          onDeleteMovie={this.onDeleteMovie}
           />
         <Footer/>
       </>

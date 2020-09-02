@@ -33,7 +33,8 @@ export default class MovieItem extends Component {
           id={this.props.id} 
           onCloseDropDown={this.props.onCloseDropDown}
           movieData={movieData}
-          onSubmitForm={this.props.onSubmitForm} />
+          onSubmitForm={this.props.onSubmitForm}
+          onDeleteMovie={this.props.onDeleteMovie} />
         
         <div className="wrapper">
           <ItemTitle title={title} />
