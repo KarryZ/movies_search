@@ -3,7 +3,7 @@ import './item-image.css';
 
 export default class ItemImage extends Component {
     render() {
-      var cover = this.props.cover;
+      var cover = this.props.poster_path;
       var styles= {
        backgroundImage: `url('${cover}')`,
       };

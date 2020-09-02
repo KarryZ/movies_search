@@ -3,7 +3,7 @@ import './item-date.css';
 
 export default class ItemDate extends Component {
     render() {
-      var sYear = this.props.year.split("-")[0];
+      var sYear = this.props.release_date ? this.props.release_date.split("-")[0] : '';
       
         return (
           <div className='item-date'>

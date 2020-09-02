@@ -81,7 +81,7 @@
     position: relative;
 }
 
-#genre::after{
+/* #genre::after{
     content: '';
     position: absolute;
     right: 23px;
@@ -92,5 +92,23 @@
     background-repeat: no-repeat;
     background-position: 100% center;
     background-size: 20px;
+    cursor: pointer;
+} */
+
+.submit-modal-btn{
+    height: 50px;
+    min-width: 120px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E63B3B;
+    border-radius: 6px;
+    border: 1px solid #E63B3B;
+    outline: none;
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
     cursor: pointer;
 }

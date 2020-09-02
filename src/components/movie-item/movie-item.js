@@ -12,17 +12,32 @@ export default class MovieItem extends Component {
    
 
   render() {
-    const { title, genres, release_date, cover } = this.props;
+    const { title, genres, release_date, poster_path } = this.props;
+    const movieData = {
+      id: this.props.id,
+      title: this.props.title,
+      genres: this.props.genres,
+      release_date: this.props.release_date,
+      poster_path: this.props.poster_path,
+      overview: this.props.overview,
+      runtime: this.props.runtime,
+      isOpenDropDown: this.props.isOpenDropDown
+    };
       
     return (
       <div className='movie-item'>
-        <ItemImage cover={cover} />
-        <ItemOptions onOptionHandler={this.props.onOptionHandler} movieData={this.props} id={this.props.id} />
-        <OptionDropDown isOpenDropDown={this.props.isOpenDropDown} id={this.props.id} onCloseDropDown={this.props.onCloseDropDown} />
+        <ItemImage poster_path={poster_path} />
+        <ItemOptions onOptionHandler={this.props.onOptionHandler} id={this.props.id} />
+        <OptionDropDown 
+          isOpenDropDown={this.props.isOpenDropDown} 
+          id={this.props.id} 
+          onCloseDropDown={this.props.onCloseDropDown}
+          movieData={movieData}
+          onSubmitForm={this.props.onSubmitForm} />
         
         <div className="wrapper">
           <ItemTitle title={title} />
-          <ItemDate year={release_date} />
+          <ItemDate release_date={release_date} />
         </div>
         <ItemGenres genres={genres} />
       </div>
