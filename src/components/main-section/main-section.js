@@ -17,6 +17,7 @@ export default class MainSection extends Component {
                 onCloseDropDown={this.props.onCloseDropDown}
                 onSubmitForm={this.props.onSubmitForm}
                 onDeleteMovie={this.props.onDeleteMovie}
+                onOpenMovieDetail={this.props.onOpenMovieDetail}
               />
             </div>
           </div>

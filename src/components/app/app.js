@@ -15,7 +15,8 @@ export default class App extends Component {
       item.isOpenDropDown = false;
     })
     this.state = {
-      aData: aData
+      aData: aData,
+      movieDetailData: null
     }
   }
 
@@ -35,7 +36,7 @@ export default class App extends Component {
     
     return newArr;
 
-}
+  }
 
   onOptionHandler = (id) => {    
     this.setState(( {aData} ) => {
@@ -116,18 +117,36 @@ export default class App extends Component {
       }
   })
   }
+
+  onCloseMovieDetail = () => {
+    this.setState({movieDetailData: null})
+  }
+
+  onOpenMovieDetail = (id) => {
+    const idx = aData.findIndex( (el) => el.id === id );
+    this.setState(( {aData}) => {
+      return {
+      movieDetailData: aData[idx]
+      }
+    })
+  }
   
 
   render() {
     return (
       <>
-        <Header moviesList={this.state.aData} onSubmitForm={this.onSubmitForm}/>
+        <Header 
+          moviesList={this.state.aData} 
+          onSubmitForm={this.onSubmitForm}
+          movieDetailData={this.state.movieDetailData}          
+          onCloseMovieDetail={this.onCloseMovieDetail}/>
         <MainSection 
           moviesList={this.state.aData} 
           onOptionHandler={this.onOptionHandler}
           onCloseDropDown={this.onCloseDropDown}
           onSubmitForm={this.onSubmitForm}
           onDeleteMovie={this.onDeleteMovie}
+          onOpenMovieDetail={this.onOpenMovieDetail}
           />
         <Footer/>
       </>

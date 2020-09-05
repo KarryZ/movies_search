@@ -25,7 +25,7 @@ export default class MovieItem extends Component {
     };
       
     return (
-      <div className='movie-item'>
+      <div className='movie-item' onClick={() => {this.props.onOpenMovieDetail(this.props.id)}}>
         <ItemImage poster_path={poster_path} />
         <ItemOptions onOptionHandler={this.props.onOptionHandler} id={this.props.id} />
         <OptionDropDown 
