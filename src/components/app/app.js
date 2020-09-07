@@ -18,7 +18,7 @@ export default class App extends Component {
       aData: aData,
       movieDetailData: null
     }
-  }
+  } 
 
   toggleProperty(arr, id, property) {
     const idx = arr.findIndex( (el) => el.id === id );

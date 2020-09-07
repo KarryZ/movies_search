@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './header-movie-detail.css';
 import Logo from '../logo';
 import BackButton from '../back-button';
-import ItemImage from '../item-image';
+import ItemImage from '../item-image'; 
 
 
 const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {

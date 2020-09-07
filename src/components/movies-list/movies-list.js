@@ -25,7 +25,7 @@ export default class MoviesList extends Component {
         onOpenMovieDetail={this.props.onOpenMovieDetail}
         />);
     });
-    let isDataReceived = this.aData.length;
+    let isDataReceived = !!this.aData.length;
     return (
       <ErrorBoudary isDataReceived={isDataReceived} >
         <div className='movies-list'>

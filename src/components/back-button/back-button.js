@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import './back-button.css';
+import './back-button.css'; 
 
 
 const BackButton = ({onCloseMovieDetail}) => {

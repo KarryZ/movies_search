@@ -6,7 +6,7 @@ import ItemOptions from '../item-options';
 import ItemTitle from '../item-title';
 import ItemDate from '../item-date';
 import ItemGenres from '../item-genres';
-import OptionDropDown from '../option-dropdown';
+import OptionDropDown from '../option-dropdown'; 
 
 export default class MovieItem extends Component {
    
@@ -25,8 +25,8 @@ export default class MovieItem extends Component {
     };
       
     return (
-      <div className='movie-item' onClick={() => {this.props.onOpenMovieDetail(this.props.id)}}>
-        <ItemImage poster_path={poster_path} />
+      <div className='movie-item' >
+        <ItemImage poster_path={poster_path} onOpenMovieDetail={this.props.onOpenMovieDetail} id={this.props.id} />
         <ItemOptions onOptionHandler={this.props.onOptionHandler} id={this.props.id} />
         <OptionDropDown 
           isOpenDropDown={this.props.isOpenDropDown} 
