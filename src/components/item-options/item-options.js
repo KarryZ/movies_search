@@ -6,7 +6,7 @@ export default class ItemOptions extends Component {
 
   render() {
     return (
-      <div className='item-options'></div>
+      <div className='item-options' onClick={()=> {this.props.onOptionHandler(this.props.id)}} ></div>
     )
   }
 }

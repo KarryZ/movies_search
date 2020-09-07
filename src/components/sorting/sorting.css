@@ -5,6 +5,7 @@
     text-transform: uppercase;
     font-weight: 100;
     letter-spacing: 2px;
+    position: relative;
 }
 
 .sorting-label{
@@ -14,4 +15,68 @@
 
 .sorting-dropdown{
     color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.sorting-dropdown:hover{
+    color: #E63B3B;
+}
+
+.sorting-dropdown.show {
+    color: #E63B3B;
+}
+
+.caret-down{
+    background-image: url('../../images/caret-down.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+    transition: transform .4s;
+}
+
+.sorting-dropdown.show .caret-down{
+    transform: rotate(180deg);
+}
+
+.sorting-options{
+    display: none;
+    background-color: #555555;
+    border-radius: 5px;
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.sorting-dropdown.show .sorting-options{
+    display: flex;
+}
+
+.sorting-option-item {
+    height: 40px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #ffffff;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+.sorting-option-item:hover {
+    background-color: #E63B3B;
 }

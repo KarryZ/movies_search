@@ -11,7 +11,14 @@ export default class MainSection extends Component {
             <div className='container'>
               <NavPanel/>
               <CountMovies/>
-              <MoviesList/>
+              <MoviesList 
+                moviesList={this.props.moviesList}
+                onOptionHandler={this.props.onOptionHandler}
+                onCloseDropDown={this.props.onCloseDropDown}
+                onSubmitForm={this.props.onSubmitForm}
+                onDeleteMovie={this.props.onDeleteMovie}
+                onOpenMovieDetail={this.props.onOpenMovieDetail}
+              />
             </div>
           </div>
         )

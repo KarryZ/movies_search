@@ -1,23 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './header.css';
 import Logo from '../logo';
 import AddMovieBtn from '../add-movie-btn';
 import Search from '../search';
+import HeaderMovieDetail from '../header-movie-detail';
 
+const Header = ({moviesList, onSubmitForm, movieDetailData,  onCloseMovieDetail}) => {
+  const [movieData] = useState({
+    id: '',
+    title: '',
+    genres: '',
+    release_date: '',
+    poster_path: '',
+    overview: '',
+    runtime: '',
+    isOpenDropDown: ''
+  });
 
-export default class Header extends Component {
-    render() {
-        return (
-          <div className='header'>
-                <div className='container'>
-                    <div className='wrapper'>
-                        <Logo/>
-                        <AddMovieBtn/>
-                    </div>
-                    <h1 className='title'>FIND YOUR MOVIE</h1>
-                    <Search/>
-                </div>
-          </div>
-        )
-      }
+  const isVisibleMainHeader = !movieDetailData;
+
+  return (
+    <div className='header'>
+      {isVisibleMainHeader && <div className='container main-container'>
+              <div className='wrapper'>
+                  <Logo/>
+                  <AddMovieBtn movieData={movieData} onSubmitForm={onSubmitForm}/>
+              </div>
+              <div className='header-content'>
+                <h1 className='title'>FIND YOUR MOVIE</h1>
+                <Search/>
+              </div>
+              
+          </div>}
+
+          {!isVisibleMainHeader && 
+            <HeaderMovieDetail movieDetailData={movieDetailData} onCloseMovieDetail={onCloseMovieDetail} />}
+  
+    </div>
+  )
+
 }
+
+export default Header;
