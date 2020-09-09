@@ -9,12 +9,13 @@ const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
 
   const [releaseDate, setReleaseDate] = useState(movieDetailData.release_date);
 
-  useEffect(() => {
-    setReleaseDate(movieDetailData.release_date.split('-')[0]);
-  }, [movieDetailData.release_date])
+  const useReleaseDate = () => {
+    useEffect(() => {
+      setReleaseDate(movieDetailData.release_date.split('-')[0]);
+    });
 
-
-  
+    return releaseDate;
+  }
 
   return (    
        <div className='container detail-container'>
@@ -31,7 +32,7 @@ const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
                   </div>                  
                   <div className='movie-tagline'>{movieDetailData.tagline}</div>
                   <div className='detail-info__wrap'>
-                    <div className='movie-year'>{releaseDate}</div>
+                    <div className='movie-year'>{useReleaseDate()}</div>
                     <div className='movie-runtime'>{`${movieDetailData.runtime} min`}</div>
                   </div>                  
                   <div className='movie-overview'>{movieDetailData.overview}</div>
