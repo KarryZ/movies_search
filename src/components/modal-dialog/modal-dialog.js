@@ -26,6 +26,7 @@ export default class ModalDialog extends Component {
   }
  
   render() {  
+    const isNewMovie = this.props.isNewMovie;
     return(
           <ReactModal 
             isOpen={this.props.isOpen}
@@ -36,6 +37,15 @@ export default class ModalDialog extends Component {
               </div>
               
               <div className='modal-content'>
+                {!isNewMovie &&
+                    <div className='field-input'>
+                    <label>Movie ID</label>
+                    <div className='movie-id' >{this.props.movieData.id}</div>
+                  </div>
+                }
+                  
+               
+
                 <div className='field-input'>
                   <label>Title</label>
                   <input value={this.props.movieData.title} onChange={evt => this.updatePropertyValue(evt, 'title')}/>

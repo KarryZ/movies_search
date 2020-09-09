@@ -112,3 +112,10 @@
     text-transform: uppercase;
     cursor: pointer;
 }
+
+.movie-id{
+    color: #ffffff;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 100;
+}
