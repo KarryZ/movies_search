@@ -1,19 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './modal-delete.css';
 import ReactModal from 'react-modal';
 import CloseModalBtn from '../close-modal-btn';
+import { deleteMovieFromList } from '../../store/actions';
+import { connect } from 'react-redux';
+import { compose } from '../../utils';
+import { withMovieStoreService } from '../hoc';
 
 
 ReactModal.setAppElement('#root');
 
-export default class ModalDelete extends Component {
-   
-  render() {  
+const ModalDelete = (props) => {
+
+  const onDeleteMovie = (id) => {
+    props.moviestoreService.deleteMovie(id)
+    .then(response => {
+      if(response.status === 204){
+        props.deleteMovieFromList(id);
+      }
+      
+    })
+      
+  }
     return(
           <ReactModal className='modal-delete'
-            isOpen={this.props.isOpen}
+            isOpen={props.isOpen}
             contentLabel="Minimal Modal Example">
-              <CloseModalBtn handleCloseModal={this.props.handleCloseModal}/>
+              <CloseModalBtn handleCloseModal={props.handleCloseModal}/>
               <div className='modal-header'>
                 <h2>DELETE MOVIE</h2>
               </div>
@@ -22,12 +35,23 @@ export default class ModalDelete extends Component {
               </div>
               <div className='modal-footer'>
                 <button className='confirm-modal-btn' 
-                  onClick={(e) => { this.props.onDeleteMovie(this.props.id)}}>
+                  onClick={(e) => { onDeleteMovie(props.id)}}>
                     Confirm
                 </button>    
               </div>
           </ReactModal>       
-    );
-  }
+    );  
 }
 
+const mapStateToProps = (props) => {
+  return props;
+}
+
+const mapDispatchToProps =  {   
+  deleteMovieFromList
+};
+
+export default compose(
+  withMovieStoreService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)( ModalDelete );

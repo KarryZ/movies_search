@@ -3,10 +3,14 @@ import './modal-dialog.css';
 import ReactModal from 'react-modal';
 import CloseModalBtn from '../close-modal-btn';
 import ResetModalBtn from '../reset-modal-form';
+import { saveMovie,  moviesLoaded, moviesError } from '../../store/actions';
+import { connect } from 'react-redux';
+import { compose } from '../../utils';
+import { withMovieStoreService } from '../hoc';
 
 ReactModal.setAppElement('#root');
 
-export default class ModalDialog extends Component {
+class ModalDialog extends Component {
   constructor(props) {
     super(props);
     let oEditMovieData = props.movieData; 
@@ -23,6 +27,28 @@ export default class ModalDialog extends Component {
 
   updatePropertyValue = (evt, property) =>{
     this.props.updatePropertyValue(evt, property, this.props.movieData.id);
+  }
+
+  isValidFields(movieData, isNewMovie) {
+     if(isNewMovie){
+      delete movieData.id;
+    };  
+    return Object.values(movieData).every(i => i !== "");
+  }
+
+  onSubmitForm = (movieData, isNewMovie) => {
+      if(this.isValidFields(movieData, isNewMovie)){
+        this.props.moviestoreService.saveMovie(movieData, isNewMovie)
+      .then(data => {
+        if(data.status === 201 || data.status === 200){
+         return this.props.moviestoreService.getAllMovies(this.props.sorter, this.props.filter)
+        }
+      })
+      .then((data) => { this.props.moviesLoaded(data)})
+      .finally(() => this.props.handleCloseModal())
+      .catch((error) => {this.props.moviesError(error)});
+      }
+         
   }
  
   render() {  
@@ -75,7 +101,7 @@ export default class ModalDialog extends Component {
                 <ResetModalBtn label='Reset' 
                    onResetAction={(e) => { this.props.onResetForm(this.savedData)}} />
                   <button className='submit-modal-btn' 
-                  onClick={(e) => { this.props.onSubmitForm(this.props.movieData, this.props.isNewMovie)}}>
+                  onClick={(e) => { this.onSubmitForm(this.props.movieData, this.props.isNewMovie)}}>
                     Submit
                 </button>    
               </div>
@@ -85,3 +111,17 @@ export default class ModalDialog extends Component {
   }
 }
 
+const mapStateToProps = (props) => {
+  return props;
+}
+
+const mapDispatchToProps =  {   
+  saveMovie,
+  moviesLoaded,
+  moviesError
+};
+
+export default compose(
+  withMovieStoreService(),
+  connect(mapStateToProps, mapDispatchToProps)
+)( ModalDialog );

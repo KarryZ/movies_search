@@ -9,38 +9,37 @@ import ItemGenres from '../item-genres';
 import OptionDropDown from '../option-dropdown'; 
 
 export default class MovieItem extends Component {
-   
+  constructor(props) {
+    super(props);
+    this.state = {isOpenDropDown: false};
+  }   
+  onOptionHandler = (id) => {
+    this.setState({isOpenDropDown: true});
+  }
+  onCloseDropDown = (id) => {
+    this.setState({isOpenDropDown: false});
+  }
 
   render() {
-    const { title, genres, release_date, poster_path } = this.props;
-    const movieData = {
-      id: this.props.id,
-      title: this.props.title,
-      genres: this.props.genres,
-      release_date: this.props.release_date,
-      poster_path: this.props.poster_path,
-      overview: this.props.overview,
-      runtime: this.props.runtime,
-      isOpenDropDown: this.props.isOpenDropDown
-    };
+    const { title, genres, release_date, poster_path, movieData } = this.props;
+    
       
     return (
       <div className='movie-item' >
-        <ItemImage poster_path={poster_path} onOpenMovieDetail={this.props.onOpenMovieDetail} id={this.props.id} />
-        <ItemOptions onOptionHandler={this.props.onOptionHandler} id={this.props.id} />
+        <ItemImage poster_path={this.props.poster_path} onOpenMovieDetail={this.props.onOpenMovieDetail} id={this.props.id} />
+        <ItemOptions onOptionHandler={this.onOptionHandler} id={this.props.id} />
         <OptionDropDown 
-          isOpenDropDown={this.props.isOpenDropDown} 
+          isOpenDropDown={this.state.isOpenDropDown} 
           id={this.props.id} 
-          onCloseDropDown={this.props.onCloseDropDown}
-          movieData={movieData}
-          onSubmitForm={this.props.onSubmitForm}
+          onCloseDropDown={this.onCloseDropDown}
+          movieData={movieData}         
           onDeleteMovie={this.props.onDeleteMovie} />
         
         <div className="wrapper">
-          <ItemTitle title={title} />
-          <ItemDate release_date={release_date} />
+          <ItemTitle title={this.props.title} />
+          <ItemDate release_date={this.props.release_date} />
         </div>
-        <ItemGenres genres={genres} />
+        <ItemGenres genres={this.props.genres} />
       </div>
     )
   }

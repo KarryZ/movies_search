@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './option-dropdown.css';
 import ModalDialog from '../modal-dialog';
 import ModalDelete from '../modal-delete';
+import { connect } from 'react-redux';
 
 
-export default class OptionDropDown extends Component {
+class OptionDropDown extends Component {
   constructor (props) {
     super(props);
     this.oSavedMovieData = Object.assign(this.props.movieData);
@@ -87,5 +88,10 @@ export default class OptionDropDown extends Component {
       </div>
     ) : '';
   }
+};
+
+const mapStateToProps = ({ moviesList, movieDetailData}) => {
+  return { moviesList, movieDetailData }; 
 }
 
+export default connect(mapStateToProps)(OptionDropDown);
