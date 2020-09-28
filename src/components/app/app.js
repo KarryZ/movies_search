@@ -18,7 +18,7 @@ export default class App extends Component {
       aData: aData,
       movieDetailData: null
     }
-  }
+  } 
 
   toggleProperty(arr, id, property) {
     const idx = arr.findIndex( (el) => el.id === id );
@@ -113,7 +113,8 @@ export default class App extends Component {
       ];
 
       return {
-        aData: newArr
+        aData: newArr,
+        movieDetailData: null
       }
   })
   }
@@ -123,10 +124,13 @@ export default class App extends Component {
   }
 
   onOpenMovieDetail = (id) => {
-    const idx = aData.findIndex( (el) => el.id === id );
+    
     this.setState(( {aData}) => {
       return {
-      movieDetailData: aData[idx]
+      movieDetailData: (() =>{
+        const idx = aData.findIndex( (el) => el.id === id );
+        return aData[idx];
+      })()
       }
     })
   }

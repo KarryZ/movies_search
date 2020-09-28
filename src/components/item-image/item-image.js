@@ -8,7 +8,7 @@ export default class ItemImage extends Component {
        backgroundImage: `url('${cover}')`,
       };
         return (
-          <div className='item-image' style={styles}></div>
+          <div className='item-image' style={styles} onClick={() => {this.props.onOpenMovieDetail(this.props.id)}} ></div>
         )
       }
 }

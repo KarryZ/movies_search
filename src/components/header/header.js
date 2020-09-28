@@ -3,7 +3,7 @@ import './header.css';
 import Logo from '../logo';
 import AddMovieBtn from '../add-movie-btn';
 import Search from '../search';
-import HeaderMovieDetail from '../header-movie-detail';
+import HeaderMovieDetail from '../header-movie-detail'; 
 
 const Header = ({moviesList, onSubmitForm, movieDetailData,  onCloseMovieDetail}) => {
   const [movieData] = useState({
