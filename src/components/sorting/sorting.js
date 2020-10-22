@@ -3,7 +3,7 @@ import './sorting.css';
 import { connect } from 'react-redux';
 import { compose } from '../../utils';
 import { withMovieStoreService } from '../hoc';
-import { saveMovie,  moviesLoaded, moviesError, setSorter } from '../../store/actions';
+import { setSorter, getMovies } from '../../store/actions';
 
 class Sorting extends Component {
   state= {
@@ -24,10 +24,9 @@ class Sorting extends Component {
     this.setState({selectedOption: value});
 
     const sortOption = e.target.dataset.sort;
-    this.props.setSorter(sortOption);
-    this.props.moviestoreService.getAllMovies(sortOption, this.props.filter)
-    .then((data) => { this.props.moviesLoaded(data)})
-    .catch((error) => {this.props.moviesError(error)}) 
+    const { setSorter, getMovies, filter, moviestoreService } = this.props;
+    setSorter(sortOption);
+    getMovies(sortOption, filter, moviestoreService);
   }
 
     render() {
@@ -56,12 +55,14 @@ const mapStateToProps = (props) => {
   return props;
 }
 
-const mapDispatchToProps =  {   
-  saveMovie,
-  moviesLoaded,
-  moviesError,
-  setSorter
-};
+const mapDispatchToProps = (dispatch) => ({   
+  getMovies: (sorter, filter, moviestoreService) => {
+    return dispatch(getMovies(sorter, filter, moviestoreService))
+  },
+  setSorter: (sorter) => {
+    return dispatch(setSorter(sorter))
+  },
+});
 
 export default compose(
   withMovieStoreService(),

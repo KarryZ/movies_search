@@ -14,7 +14,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                moviesList: action.payload                
+                moviesList: action.payload
             };
         case 'RECEIVED_CURRENT_MOVIE_ID':
             return {
@@ -45,13 +45,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 moviesList: updatedMovieList,
-                movieDetailID: null,
-                // loading: false,
-                // sorter: "release_date",
-                // filter: ""
+                movieDetailID: null
             };
-        case 'SAVE_MOVIE':
-            return Object.assign({ ...state, movies: action.payload.moviesList });
         case 'SET_FILTER':
             return {
                 ...state,

@@ -4,17 +4,15 @@ import './movies-list.css';
 import MovieItem from '../movie-item';
 import ErrorBoudary from '../error-boudary';
 import { withMovieStoreService } from '../hoc';
-import { moviesLoaded, moviesError } from '../../store/actions';
+import { getMovies } from '../../store/actions';
 import { compose } from '../../utils';
 import Spinner from '../spinner';
 
 class MoviesList extends Component {
 
   componentDidMount() {
-    const { moviestoreService, moviesLoaded, moviesError, sorter, filter } = this.props;
-    moviestoreService.getAllMovies(sorter, filter)
-    .then((data) => { moviesLoaded(data)})
-    .catch((error) => {moviesError(error)})  
+    const { moviestoreService, sorter, filter, getMovies } = this.props;
+    getMovies(sorter, filter, moviestoreService)
   }
 
   render() {
@@ -56,10 +54,11 @@ const mapStateToProps = ({ moviesList, movieDetailData, loading, error, sorter, 
   return { moviesList, movieDetailData, loading, error, sorter, filter}; 
 }
 
-const mapDispatchToProps =  {   
-  moviesLoaded,
-  moviesError
-};
+const mapDispatchToProps =  (dispatch) => ({   
+  getMovies: (sorter, filter, moviestoreService) => {
+    return dispatch(getMovies(sorter, filter, moviestoreService))
+  }
+});
 
 export default compose(
   withMovieStoreService(),

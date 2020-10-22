@@ -21,7 +21,7 @@ export default class MovieItem extends Component {
   }
 
   render() {
-    const { title, genres, release_date, poster_path, movieData } = this.props;
+    const { movieData } = this.props;
     
       
     return (
