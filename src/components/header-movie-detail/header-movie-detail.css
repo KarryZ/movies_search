@@ -29,13 +29,14 @@
 
 .detail-info__wrap{
     display: flex;
-    width: 15%;
+    width: 180px;
     align-items: center;
     justify-content: space-between;
     color: #f65251;
     margin-top: 10px;
     font-size: 25px;
     font-weight: 100;
+    min-width: 180px;
 }
 
 .movie-rating{

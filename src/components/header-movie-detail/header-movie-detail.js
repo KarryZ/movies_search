@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './header-movie-detail.css';
 import Logo from '../logo';
 import BackButton from '../back-button';
@@ -7,17 +7,9 @@ import ItemImage from '../item-image';
 
 const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
 
-  const [releaseDate, setReleaseDate] = useState(movieDetailData.release_date);
+  const [releaseDate] = useState(movieDetailData.release_date);
 
-  const useReleaseDate = () => {
-    useEffect(() => {
-      setReleaseDate(movieDetailData.release_date.split('-')[0]);
-    });
-
-    return releaseDate;
-  }
-
-  return (    
+    return (    
        <div className='container detail-container'>
               <div className='wrapper'>
                   <Logo/>
@@ -32,7 +24,7 @@ const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
                   </div>                  
                   <div className='movie-tagline'>{movieDetailData.tagline}</div>
                   <div className='detail-info__wrap'>
-                    <div className='movie-year'>{useReleaseDate()}</div>
+                    <div className='movie-year'>{releaseDate.slice(0, 4)}</div>
                     <div className='movie-runtime'>{`${movieDetailData.runtime} min`}</div>
                   </div>                  
                   <div className='movie-overview'>{movieDetailData.overview}</div>
