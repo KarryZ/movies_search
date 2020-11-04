@@ -1,7 +1,7 @@
 const initialState = {
     moviesList: [],
     movieDetailID: null,
-    loading: true,
+    loading: false,
     error: null,
     sorter: "release_date",
     filter: ""
@@ -14,6 +14,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
+                error: null,
                 moviesList: action.payload
             };
         case 'RECEIVED_CURRENT_MOVIE_ID':
@@ -58,6 +59,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 sorter: action.payload,
                 movieDetailID: null
+            };
+        case 'SET_MOVIE_NOT_FOUND':
+            return {
+                moviesList: [],
+                movieDetailID: null,
+                loading: false,
+                error: "notFound",
+                sorter: "release_date",
+                filter: ""
             };
 
         default:

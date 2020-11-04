@@ -1,22 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './main-section.css';
 import NavPanel from '../nav-panel';
 import CountMovies from '../count-movies';
 import MoviesList from '../movies-list';
+import { useLocation} from "react-router-dom";
+import MovieNotFound from '../page-movie-not-found';
 
-export default class MainSection extends Component {
-    render() {
+
+ let MainSection = (props) => { 
+  let location = useLocation();
+  let sPathname = location.pathname;
+
         return (
           <div className='main-section'>
             <div className='container'>
               <NavPanel/>
+              {sPathname === "/notFound" ? 
+                <MovieNotFound /> :
+                <>
               <CountMovies/>
               <MoviesList                
-                onSubmitForm={this.props.onSubmitForm}               
-                onOpenMovieDetail={this.props.onOpenMovieDetail}
+                onSubmitForm={props.onSubmitForm}               
+                onOpenMovieDetail={props.onOpenMovieDetail}
               />
+              </>}
             </div>
           </div>
-        )
-      }
+        )      
 }
+
+export default MainSection;

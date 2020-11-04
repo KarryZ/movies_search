@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './header-movie-detail.css';
 import Logo from '../logo';
 import BackButton from '../back-button';
 import ItemImage from '../item-image'; 
-
+import { useHistory } from 'react-router-dom';
 
 const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
 
   const [releaseDate] = useState(movieDetailData.release_date);
+  let history = useHistory();
+
+  
+  useEffect(() => {
+    const idx = movieDetailData.id;
+    history.push(idx ? '/film/' + idx : '/');
+    return function cleanup() {
+      history.push('/Home/');
+    };
+  }, [movieDetailData, history])
 
     return (    
        <div className='container detail-container'>

@@ -1,5 +1,5 @@
-const getMovies = (sorter, filter, moviestoreService) => async (dispatch) => {
-    let data = await moviestoreService.getAllMovies(sorter, filter);
+const getMovies = (sorter, filter, moviestoreService, searchVal ) => async (dispatch) => {
+    let data = await moviestoreService.getAllMovies(sorter, filter, searchVal);
     dispatch(moviesLoaded(data))
 };
 
@@ -57,6 +57,19 @@ const setSorter = (newSorter) => (dispatch) => dispatch({
     payload: newSorter
 })
 
+const setSearch = (searchValue, moviestoreService)  => async dispatch => {
+    let data = await moviestoreService.searchMovie(searchValue);
+    if(data.length){
+        dispatch(moviesLoaded(data));
+    } else{
+        dispatch({
+            type: 'SET_MOVIE_NOT_FOUND',
+            payload: data
+        });
+    } 
+    
+}
+
 export {
     getMovies,
     moviesLoaded,
@@ -66,5 +79,6 @@ export {
     deleteMovieFromList,
     saveMovie,
     setFilter,
-    setSorter
+    setSorter,
+    setSearch
 };

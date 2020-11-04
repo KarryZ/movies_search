@@ -4,7 +4,7 @@ import './search-button.css';
 export default class SearchButton extends Component {
     render() {
         return (
-          <button className='search-button'>Search</button>
+          <button className='search-button' onClick={e => this.props.onMovieSearch()}>Search</button>
         )
       }
 }
