@@ -44,7 +44,7 @@ const mapStateToProps = (props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getMovies: (sorter, filter, moviestoreService) => {
-    return dispatch(getMovies(sorter, filter, moviestoreService))
+    return dispatch(getMovies(sorter, filter, moviestoreService, ""))
   },
   setFilter: (filter) => {
     return dispatch(setFilter(filter))
