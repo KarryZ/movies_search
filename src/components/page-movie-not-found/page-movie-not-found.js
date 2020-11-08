@@ -3,8 +3,6 @@ import './page-movie-not-found.css';
 
 
 const MovieNotFound = (props) => {
-  let isDataReceived = props.isDataReceived;
-
   const movieNotFoundPage = (
     <div className="movieNotFoundPage">
       <h2 className="message">
@@ -15,10 +13,10 @@ const MovieNotFound = (props) => {
 
   return (
     <>
-      {isDataReceived ? props.children : movieNotFoundPage}
+      {props.isDataReceived ? props.children : movieNotFoundPage}
     </>
   )
-
+  
 }
 
 export default MovieNotFound;

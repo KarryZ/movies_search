@@ -7,9 +7,9 @@ import { useLocation} from "react-router-dom";
 import MovieNotFound from '../page-movie-not-found';
 
 
- let MainSection = (props) => { 
-  let location = useLocation();
-  let sPathname = location.pathname;
+ const MainSection = (props) => { 
+  const location = useLocation();
+  const sPathname = location.pathname;
 
         return (
           <div className='main-section'>

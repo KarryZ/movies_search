@@ -9,13 +9,12 @@ import { getMovies, setSearch } from '../../store/actions';
 import { compose } from '../../utils';
 import Spinner from '../spinner';
 
-let MoviesList = ({ moviesList, loading, error, sorter, filter, moviestoreService, getMovies, setSearch, onOpenMovieDetail }) => {
-  let params = useParams();
-  let history = useHistory();
-  let location = useLocation();
-  let searchValue = params.searchValue;
-  let historyLocation = history.location.pathname;
-
+const MoviesList = ({ moviesList, loading, error, sorter, filter, moviestoreService, getMovies, setSearch, onOpenMovieDetail }) => {
+  const params = useParams();
+  const history = useHistory();
+  const location = useLocation();
+  const searchValue = params.searchValue;
+  const historyLocation = history.location.pathname;
 
   useEffect(() => {
     if (searchValue) {
@@ -24,11 +23,7 @@ let MoviesList = ({ moviesList, loading, error, sorter, filter, moviestoreServic
     else if (historyLocation === "/Home") {
       getMovies(sorter, filter, moviestoreService);
     }
-
   }, [searchValue, historyLocation, sorter, filter, moviestoreService,setSearch, getMovies ])
-
-
-
 
   if (loading) {
     return <Spinner />
@@ -67,7 +62,6 @@ let MoviesList = ({ moviesList, loading, error, sorter, filter, moviestoreServic
       </div>
     </MovieNotFound>
   )
-
 }
 
 const mapStateToProps = ({ moviesList, movieDetailData, loading, error, sorter, filter }) => {

@@ -14,9 +14,7 @@ const HeaderMovieDetail = ({movieDetailData, onCloseMovieDetail} ) => {
   useEffect(() => {
     const idx = movieDetailData.id;
     history.push(idx ? '/film/' + idx : '/');
-    return function cleanup() {
-      history.push('/Home/');
-    };
+    return () => history.push('/Home/');
   }, [movieDetailData, history])
 
     return (    
