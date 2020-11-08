@@ -72,7 +72,7 @@ export default class MovieStoreService {
     return {
       "id": movie.id,
       "title": movie.title,
-      "tagline": movie.tagline || "123",
+      "tagline": movie.tagline || " ",
       "vote_average": movie.vote_average || 0,
       "vote_count": movie.vote_count || 0,
       "release_date": movie.release_date || "",
@@ -88,7 +88,7 @@ export default class MovieStoreService {
   _transformNewMovie(movie) {
     return {
       "title": movie.title,
-      "tagline": movie.tagline || "123",
+      "tagline": movie.tagline || " ",
       "vote_average": movie.vote_average || 0,
       "vote_count": movie.vote_count || 0,
       "release_date": movie.release_date || "",
